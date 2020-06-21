@@ -21,17 +21,13 @@
     </script>
 
 </head>
-<body>
+<body onload="setToday()">
     <h1>NASA Photo of the Day</h1>
-      <input id="searchTerm" type="text" placeholder="Enter search term" />
-      <button id="searchButton">
-        Search
-      </button>
+      <input id="searchTerm" type="text" placeholder="Enter new date..." />
+      <button id="searchButton">Search</button>
 
       <h1 id="image-title"></h1>
-      <h3 id="date">
-          
-      </h3>
+      <h3 id="date"></h3>
       <div id="image"></div>
       <div id="content"></div>
     
