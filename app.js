@@ -1,20 +1,29 @@
-let searchButton = document.querySelector("#search")
+let searchButton = document.querySelector("#searchButton")
+let dateBox = document.querySelector("#searchTerm")
+
 
 //Add an event listener to the button that runs the function sendApiRequest when it is clicked
 searchButton.addEventListener("click", ()=>{
-    console.log("button pressed")
-    sendApiRequest()
+
+    let str = new Date(dateBox.value).toISOString();
+    var rawDate = str.substring(0, 10);
+    console.log(rawDate);
+
+
+    sendApiRequest(rawDate)
 })
 
 
 //An asynchronous function to fetch data from the API.
-async function sendApiRequest(){
+async function sendApiRequest(date){
     let API_KEY = "SAah6C0uGcZ7AATFJn8UbuyXjpGnZGXkbgdKwJ99"
-    let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`);
+    // let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`);
 
+    let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&start_date=${date}&end_date=${date}`);
+    
     let data = await response.json();
-    console.log(data);
-    useApiData(data);
+    console.log(data[0]);
+    useApiData(data[0]);
 }
 
 
