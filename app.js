@@ -31,9 +31,12 @@ function useApiData(data){
 
     var date = setDate(data);
 
-    document.querySelector("#date").innerHTML = date;
-    document.querySelector("#image").innerHTML = `<img src="${data.url}">`;
-    document.querySelector("#content").innerHTML = data.explanation;
+    document.querySelector("#subtitle").innerHTML = data.copyright + " &#183; " +  date;
+    document.querySelector("#image").innerHTML = `
+        <div>
+            <img src="${data.url}" alt="retreived-image" class="retreived-image">
+        </div>`
+    document.querySelector("#details").innerHTML = data.explanation;
 
 
 }
